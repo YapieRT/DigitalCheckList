@@ -86,11 +86,11 @@ resource "aws_instance" "app-server-1" {
   availability_zone = data.aws_availability_zones.available.names[0]
   ami = data.aws_ami.ubuntu.id
   instance_type = var.instance
-  subnet_id = aws_subnet.DigitalCheckList-Private-Subnet.id
+  subnet_id = aws_subnet.DigitalCheckList-Public-Subnet.id
   key_name = aws_key_pair.ssh-key.key_name
-  vpc_security_group_ids = [aws_security_group.DigitalCheckList-Private-SG.id]
+  vpc_security_group_ids = [aws_security_group.DigitalCheckList-Public-SG.id]
 
-  depends_on = [aws_instance.mongodb-server, aws_security_group.DigitalCheckList-Private-SG, aws_instance.nat-router]
+  depends_on = [aws_instance.mongodb-server, aws_security_group.DigitalCheckList-Public-SG]
 
   user_data = templatefile("startups/diglist_install.sh.tpl", {
     INITIAL_USERNAME = var.db_user
@@ -113,11 +113,11 @@ resource "aws_instance" "app-server-2" {
   availability_zone = data.aws_availability_zones.available.names[0]
   ami = data.aws_ami.ubuntu.id
   instance_type = var.instance
-  subnet_id = aws_subnet.DigitalCheckList-Private-Subnet.id
+  subnet_id = aws_subnet.DigitalCheckList-Public-Subnet.id
   key_name = aws_key_pair.ssh-key.key_name
-  vpc_security_group_ids = [aws_security_group.DigitalCheckList-Private-SG.id]
+  vpc_security_group_ids = [aws_security_group.DigitalCheckList-Public-SG.id]
 
-  depends_on = [aws_instance.mongodb-server, aws_security_group.DigitalCheckList-Private-SG, aws_instance.nat-router]
+  depends_on = [aws_instance.mongodb-server, aws_security_group.DigitalCheckList-Public-SG]
 
   user_data = templatefile("startups/diglist_install.sh.tpl", {
     INITIAL_USERNAME = var.db_user

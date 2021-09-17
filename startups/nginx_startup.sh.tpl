@@ -9,8 +9,8 @@ sudo apt install nginx -y
 
 #Adding route for connecting to database server
 /usr/bin/sudo bash -c "echo ${DB_SERVER} database >> /etc/hosts"
-/usr/bin/sudo bash -c "echo ${FIRST_APP_SERVER} database >> /etc/hosts"
-/usr/bin/sudo bash -c "echo ${SECOND_APP_SERVER} database >> /etc/hosts"
+/usr/bin/sudo bash -c "echo ${FIRST_APP_SERVER} app1 >> /etc/hosts"
+/usr/bin/sudo bash -c "echo ${SECOND_APP_SERVER} app2 >> /etc/hosts"
 
 #Configuring NGINX config
 

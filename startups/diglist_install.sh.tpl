@@ -37,6 +37,13 @@ sudo bash -c 'git clone https://github.com/theyurkovskiy/digichlist-api.git'
 sudo bash -c 'git clone https://github.com/theyurkovskiy/digichlist-Admin-UI.git'
 sudo bash -c 'git clone https://github.com/YapieRT/confs'
 
+#Updating apache2 conf
+
+sudo rm /etc/apache2/apache2.conf
+sudo cp /home/ubuntu/confs/apache2.conf /etc/apache2/apache2.conf
+sudo a2enmod rewrite
+
+sudo service apache2 restart
 
 #Editing admin routes in source code for adding first admin user
 sudo sed -i 's/passport\./\/\/passport\./g' /home/ubuntu/digichlist-api/routes/admin.routes.js 
